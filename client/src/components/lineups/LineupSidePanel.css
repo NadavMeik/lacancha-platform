@@ -1,0 +1,27 @@
+.lineup-side {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.lineup-side__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.lineup-side__team {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+  color: var(--text-strong);
+}
+
+.lineup-side__hint {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--muted);
+}

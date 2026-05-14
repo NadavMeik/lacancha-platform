@@ -28,6 +28,7 @@ export function LandingPage() {
         </Link>
         <nav className="nav__links" aria-label="Primary">
           <a href="#features">Features</a>
+          <Link to="/competitions">Competitions</Link>
           <Link to="/dashboard">Dashboard</Link>
           <a href="#platform">Platform</a>
           <a href="#contact">Contact</a>

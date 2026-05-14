@@ -34,7 +34,12 @@ export function DashboardPage() {
               </span>
             </button>
             <div className="dash-header__titles">
-              <p className="dash-header__crumb">LaCancha / {featuredMatch.competition}</p>
+              <p className="dash-header__crumb">
+                LaCancha /{' '}
+                <Link to={`/competitions/${featuredMatch.competitionId}`}>
+                  {featuredMatch.competition}
+                </Link>
+              </p>
               <h1 className="dash-header__title">Match dashboard</h1>
             </div>
           </div>

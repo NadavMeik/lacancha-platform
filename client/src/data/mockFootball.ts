@@ -35,6 +35,8 @@ export type MatchTimelineEvent = {
 
 export type MatchSummary = {
   id: string
+  /** Lowercase slug, matches `competitionId` in competitions data. */
+  competitionId: string
   competition: string
   matchday: string
   kickoffLabel: string
@@ -48,6 +50,7 @@ export type MatchSummary = {
 
 export const featuredMatch: MatchSummary = {
   id: 'pl-2025-12-mci-liv',
+  competitionId: 'premier-league',
   competition: 'Premier League',
   matchday: 'Matchday 12',
   kickoffLabel: 'Sun 16:30',
