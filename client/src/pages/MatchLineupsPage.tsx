@@ -1,7 +1,6 @@
 import { Link } from '../router'
 import { LineupSidePanel } from '../components/lineups/LineupSidePanel'
 import { MatchLineupHeader } from '../components/lineups/MatchLineupHeader'
-import { WorkspaceTopNav } from '../components/WorkspaceTopNav'
 import { getFixtureContext } from '../data/competitions'
 import { getLineups } from '../data/lineups'
 import '../styles/workspace-page.css'
@@ -18,7 +17,6 @@ export function MatchLineupsPage({ matchId }: MatchLineupsPageProps) {
   if (!data) {
     return (
       <div className="workspace-page">
-        <WorkspaceTopNav />
         <main className="workspace-page__main">
           <h1 className="mlineups__title">Lineups unavailable</h1>
           <p className="workspace-page__intro">
@@ -36,7 +34,6 @@ export function MatchLineupsPage({ matchId }: MatchLineupsPageProps) {
 
   return (
     <div className="workspace-page">
-      <WorkspaceTopNav />
       <main className="workspace-page__main">
         <p className="mlineups__crumb">
           <Link to="/competitions">Competitions</Link>

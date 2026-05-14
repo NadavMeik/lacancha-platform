@@ -1,7 +1,6 @@
 import { useMemo, useState } from 'react'
 import { CompetitionCard } from '../components/competitions/CompetitionCard'
 import { CompetitionCategoryNav } from '../components/competitions/CompetitionCategoryNav'
-import { WorkspaceTopNav } from '../components/WorkspaceTopNav'
 import type { CompetitionCategory } from '../data/competitions'
 import { listCompetitions } from '../data/competitions'
 import '../styles/workspace-page.css'
@@ -13,7 +12,6 @@ export function CompetitionsPage() {
 
   return (
     <div className="workspace-page">
-      <WorkspaceTopNav />
       <main className="workspace-page__main">
         <header className="comp-page__head">
           <h1 className="comp-page__title">Competitions</h1>

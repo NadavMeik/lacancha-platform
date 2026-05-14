@@ -1,5 +1,4 @@
 import { Link } from '../router'
-import { WorkspaceTopNav } from '../components/WorkspaceTopNav'
 import {
   getCompetition,
   getFixturesForCompetition,
@@ -22,7 +21,6 @@ export function CompetitionDetailPage({
   if (!competition) {
     return (
       <div className="workspace-page">
-        <WorkspaceTopNav />
         <main className="workspace-page__main">
           <h1 className="cdetail__title">Competition not found</h1>
           <p className="workspace-page__intro">
@@ -36,7 +34,6 @@ export function CompetitionDetailPage({
 
   return (
     <div className="workspace-page">
-      <WorkspaceTopNav />
       <main className="workspace-page__main">
         <p className="cdetail__crumb">
           <Link to="/competitions">Competitions</Link> / {competition.name}

@@ -1,38 +1,19 @@
-import { useState } from 'react'
 import { Link } from '../router'
 import { MatchCard } from '../components/MatchCard'
-import { Sidebar } from '../components/Sidebar'
 import { StatCard } from '../components/StatCard'
 import { featuredMatch, scoreLeader } from '../data/mockFootball'
 import './DashboardPage.css'
 
 export function DashboardPage() {
-  const [sidebarOpen, setSidebarOpen] = useState(false)
   const { home, away } = featuredMatch
   const leaders = featuredMatch.metricLeaders
   const scoreLead = scoreLeader(home.goals, away.goals)
 
   return (
     <div className="dash">
-      <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-
       <div className="dash__shell">
         <header className="dash-header">
           <div className="dash-header__left">
-            <button
-              type="button"
-              className="dash-header__menu"
-              aria-expanded={sidebarOpen}
-              aria-controls="app-sidebar"
-              aria-label="Toggle navigation"
-              onClick={() => setSidebarOpen((o) => !o)}
-            >
-              <span className="dash-header__menu-bars" aria-hidden>
-                <span />
-                <span />
-                <span />
-              </span>
-            </button>
             <div className="dash-header__titles">
               <p className="dash-header__crumb">
                 LaCancha /{' '}
@@ -47,9 +28,6 @@ export function DashboardPage() {
             <button type="button" className="btn btn--ghost">
               Export snapshot
             </button>
-            <Link to="/" className="btn btn--outline">
-              View marketing
-            </Link>
           </div>
         </header>
 
