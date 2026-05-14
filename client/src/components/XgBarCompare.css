@@ -1,0 +1,66 @@
+.xg-compare {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.xg-compare__row {
+  display: grid;
+  grid-template-columns: 2.25rem 1fr 2.75rem;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.xg-compare__abbr {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+
+.xg-compare__track {
+  height: 0.45rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--line);
+  overflow: hidden;
+  display: flex;
+}
+
+.xg-compare__track--away {
+  justify-content: flex-end;
+}
+
+.xg-compare__fill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--xg-fill) 75%, #000),
+    color-mix(in srgb, var(--xg-fill) 45%, #fff)
+  );
+  transition: width 0.35s ease;
+}
+
+.xg-compare__fill--away {
+  margin-inline-start: auto;
+  background: linear-gradient(
+    270deg,
+    color-mix(in srgb, var(--xg-fill) 75%, #000),
+    color-mix(in srgb, var(--xg-fill) 45%, #fff)
+  );
+}
+
+.xg-compare__num {
+  font-size: 0.85rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-strong);
+  text-align: right;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .xg-compare__fill {
+    transition: none;
+  }
+}
