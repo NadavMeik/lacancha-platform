@@ -22,27 +22,6 @@ const features = [
 export function LandingPage() {
   return (
     <div className="page">
-      <header className="nav">
-        <Link to="/" className="nav__brand">
-          LaCancha<span className="nav__brand-ai">AI</span>
-        </Link>
-        <nav className="nav__links" aria-label="Primary">
-          <a href="#features">Features</a>
-          <Link to="/competitions">Competitions</Link>
-          <Link to="/dashboard">Dashboard</Link>
-          <a href="#platform">Platform</a>
-          <a href="#contact">Contact</a>
-        </nav>
-        <div className="nav__actions">
-          <a className="btn btn--ghost" href="#contact">
-            Sign in
-          </a>
-          <Link className="btn btn--primary" to="/dashboard">
-            Open dashboard
-          </Link>
-        </div>
-      </header>
-
       <main>
         <section className="hero" aria-labelledby="hero-heading">
           <p className="hero__eyebrow">SportsTech · Football intelligence</p>
@@ -97,8 +76,8 @@ export function LandingPage() {
               <a className="btn btn--primary" href="#contact">
                 Talk to us
               </a>
-              <Link className="btn btn--ghost" to="/dashboard">
-                View dashboard
+              <Link className="btn btn--ghost" to="/competitions">
+                Browse competitions
               </Link>
             </div>
           </div>

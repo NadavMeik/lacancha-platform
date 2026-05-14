@@ -10,6 +10,8 @@ export type ParsedRoute =
   | { name: 'competitions' }
   | { name: 'competition'; competitionId: string }
   | { name: 'lineups'; matchId: string }
+  | { name: 'matches' }
+  | { name: 'reports' }
   | { name: 'notFound' }
 
 /** Maps pathname to a route shape (no I/O). */
@@ -36,6 +38,9 @@ export function parseRoute(path: string): ParsedRoute {
     }
     return { name: 'notFound' }
   }
+
+  if (p === '/matches') return { name: 'matches' }
+  if (p === '/reports') return { name: 'reports' }
 
   return { name: 'notFound' }
 }

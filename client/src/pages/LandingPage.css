@@ -10,65 +10,6 @@
     linear-gradient(180deg, #07090c 0%, var(--bg) 38%);
 }
 
-.nav {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  max-width: var(--max);
-  margin: 0 auto;
-  padding: 1rem var(--space);
-  border-bottom: 1px solid var(--line);
-  backdrop-filter: blur(12px);
-  background: color-mix(in srgb, var(--bg) 82%, transparent);
-}
-
-.nav__brand {
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  font-size: 1.125rem;
-  color: var(--text-strong);
-  text-decoration: none;
-}
-
-.nav__brand-ai {
-  margin-left: 2px;
-  font-weight: 600;
-  color: var(--accent);
-}
-
-.nav__links {
-  display: none;
-  align-items: center;
-  gap: 1.75rem;
-}
-
-@media (min-width: 768px) {
-  .nav__links {
-    display: flex;
-  }
-}
-
-.nav__links a {
-  font-size: 0.9375rem;
-  color: var(--muted);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.nav__links a:hover {
-  color: var(--text-strong);
-}
-
-.nav__actions {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
 main {
   flex: 1;
 }
