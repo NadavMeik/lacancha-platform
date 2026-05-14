@@ -5,12 +5,14 @@ export type SidebarNavItem = {
   to: string
   label: string
   badge?: string
+  match: 'exact' | 'prefix' | 'none'
 }
 
 const mainNav: SidebarNavItem[] = [
-  { to: '/dashboard', label: 'Overview' },
-  { to: '/dashboard', label: 'Matches', badge: 'Soon' },
-  { to: '/dashboard', label: 'Reports', badge: 'Soon' },
+  { to: '/dashboard', label: 'Overview', match: 'exact' as const },
+  { to: '/competitions', label: 'Competitions', match: 'prefix' as const },
+  { to: '/dashboard', label: 'Matches', badge: 'Soon', match: 'none' as const },
+  { to: '/dashboard', label: 'Reports', badge: 'Soon', match: 'none' as const },
 ]
 
 type SidebarProps = {
@@ -45,10 +47,15 @@ export function Sidebar({ open, onClose }: SidebarProps) {
         <nav className="sidebar__nav" aria-label="Workspace">
           <p className="sidebar__section">Workspace</p>
           <ul className="sidebar__list">
-            {mainNav.map((item, i) => {
-              const active = i === 0 && pathname === '/dashboard'
+            {mainNav.map((item) => {
+              const active =
+                item.match === 'exact'
+                  ? pathname === item.to
+                  : item.match === 'prefix'
+                    ? pathname.startsWith(item.to)
+                    : false
               return (
-                <li key={`${item.label}-${i}`}>
+                <li key={item.label}>
                   <Link
                     to={item.to}
                     className={`sidebar__link${active ? ' sidebar__link--active' : ''}`}

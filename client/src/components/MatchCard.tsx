@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react'
 import type { MatchSummary } from '../data/mockFootball'
+import { Link } from '../router'
 import { MatchTimeline } from './MatchTimeline'
 import { MetricPair } from './MetricPair'
 import { PossessionBar } from './PossessionBar'
@@ -39,6 +40,14 @@ export function MatchCard({ match }: MatchCardProps) {
           </p>
         </div>
         <span className="match-card__status">{match.status}</span>
+        <div className="match-card__actions">
+          <Link
+            className="btn btn--ghost match-card__lineups"
+            to={`/matches/${match.id}/lineups`}
+          >
+            Lineups
+          </Link>
+        </div>
       </header>
 
       <div className="match-card__scoreboard">

@@ -1,17 +1,30 @@
-import { normalizePath } from './routeUtils'
+import { parseRoute } from './routeUtils'
 import { Router, useRouter } from './router'
+import { CompetitionDetailPage } from './pages/CompetitionDetailPage'
+import { CompetitionsPage } from './pages/CompetitionsPage'
 import { DashboardPage } from './pages/DashboardPage'
 import { LandingPage } from './pages/LandingPage'
+import { MatchLineupsPage } from './pages/MatchLineupsPage'
+import { NotFoundPage } from './pages/NotFoundPage'
 
 function Routes() {
   const { pathname } = useRouter()
-  const path = normalizePath(pathname)
+  const route = parseRoute(pathname)
 
-  if (path === '/dashboard') {
-    return <DashboardPage />
+  switch (route.name) {
+    case 'landing':
+      return <LandingPage />
+    case 'dashboard':
+      return <DashboardPage />
+    case 'competitions':
+      return <CompetitionsPage />
+    case 'competition':
+      return <CompetitionDetailPage competitionId={route.competitionId} />
+    case 'lineups':
+      return <MatchLineupsPage matchId={route.matchId} />
+    default:
+      return <NotFoundPage />
   }
-
-  return <LandingPage />
 }
 
 export default function App() {

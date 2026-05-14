@@ -1,0 +1,6 @@
+.nf__title {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.25rem, 3vw, 1.65rem);
+  font-weight: 800;
+  color: var(--text-strong);
+}
