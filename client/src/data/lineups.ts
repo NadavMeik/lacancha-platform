@@ -1,23 +1,11 @@
-export type LineupRole = 'GK' | 'DF' | 'MF' | 'FW'
+export type {
+  LineupRole,
+  LineupPlayer,
+  TeamLineup,
+  MatchLineups,
+} from '../types/lineup'
 
-export type LineupPlayer = {
-  playerId: string
-  name: string
-  number: number
-  role: LineupRole
-}
-
-export type TeamLineup = {
-  formation: string
-  starters: LineupPlayer[]
-  bench: LineupPlayer[]
-}
-
-export type MatchLineups = {
-  matchId: string
-  home: TeamLineup
-  away: TeamLineup
-}
+import type { LineupRole, LineupPlayer, MatchLineups } from '../types/lineup'
 
 function xi(
   players: Array<[string, string, number, LineupRole]>,

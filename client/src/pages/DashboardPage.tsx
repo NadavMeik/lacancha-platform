@@ -1,12 +1,21 @@
 import { Link } from '../router'
 import { MatchCard } from '../components/MatchCard'
 import { StatCard } from '../components/StatCard'
-import { featuredMatch, scoreLeader } from '../data/mockFootball'
+import { PageError, PageLoader } from '../components/PageLoader'
+import { useAsync } from '../hooks/useAsync'
+import { getFeaturedMatch } from '../services/matches/matchesService'
+import { scoreLeader } from '../services/analytics/analyticsService'
 import './DashboardPage.css'
 
 export function DashboardPage() {
-  const { home, away } = featuredMatch
-  const leaders = featuredMatch.metricLeaders
+  const state = useAsync(getFeaturedMatch, [])
+
+  if (state.status === 'loading') return <PageLoader />
+  if (state.status === 'error') return <PageError message={state.message} />
+
+  const match = state.data
+  const { home, away } = match
+  const leaders = match.metricLeaders
   const scoreLead = scoreLeader(home.goals, away.goals)
 
   return (
@@ -17,8 +26,8 @@ export function DashboardPage() {
             <div className="dash-header__titles">
               <p className="dash-header__crumb">
                 LaCancha /{' '}
-                <Link to={`/competitions/${featuredMatch.competitionId}`}>
-                  {featuredMatch.competition}
+                <Link to={`/competitions/${match.competitionId}`}>
+                  {match.competition}
                 </Link>
               </p>
               <h1 className="dash-header__title">Match dashboard</h1>
@@ -38,7 +47,7 @@ export function DashboardPage() {
           </p>
 
           <div className="dash__grid">
-            <MatchCard match={featuredMatch} />
+            <MatchCard match={match} />
             <div className="dash__stats">
               <StatCard
                 label="Match score"

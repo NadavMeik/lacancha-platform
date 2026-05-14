@@ -1,4 +1,4 @@
-import type { MatchTimelineEvent } from '../data/mockFootball'
+import type { MatchTimelineEvent } from '../types/match'
 import './MatchTimeline.css'
 
 export type MatchTimelineProps = {

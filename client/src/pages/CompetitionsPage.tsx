@@ -1,14 +1,16 @@
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 import { CompetitionCard } from '../components/competitions/CompetitionCard'
 import { CompetitionCategoryNav } from '../components/competitions/CompetitionCategoryNav'
-import type { CompetitionCategory } from '../data/competitions'
-import { listCompetitions } from '../data/competitions'
+import { PageError, PageLoader } from '../components/PageLoader'
+import { useAsync } from '../hooks/useAsync'
+import type { CompetitionCategory } from '../types/competition'
+import { listCompetitions } from '../services/competitions/competitionsService'
 import '../styles/workspace-page.css'
 import './CompetitionsPage.css'
 
 export function CompetitionsPage() {
   const [category, setCategory] = useState<CompetitionCategory | 'all'>('all')
-  const rows = useMemo(() => listCompetitions(category), [category])
+  const state = useAsync(() => listCompetitions(category), [category])
 
   return (
     <div className="workspace-page">
@@ -23,11 +25,15 @@ export function CompetitionsPage() {
 
         <CompetitionCategoryNav value={category} onChange={setCategory} />
 
-        <div className="comp-page__grid workspace-page__grid">
-          {rows.map((c) => (
-            <CompetitionCard key={c.competitionId} competition={c} />
-          ))}
-        </div>
+        {state.status === 'loading' && <PageLoader />}
+        {state.status === 'error' && <PageError message={state.message} />}
+        {state.status === 'success' && (
+          <div className="comp-page__grid workspace-page__grid">
+            {state.data.map((c) => (
+              <CompetitionCard key={c.competitionId} competition={c} />
+            ))}
+          </div>
+        )}
       </main>
     </div>
   )

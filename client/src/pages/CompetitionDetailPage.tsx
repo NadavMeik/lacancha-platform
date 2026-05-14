@@ -1,8 +1,7 @@
 import { Link } from '../router'
-import {
-  getCompetition,
-  getFixturesForCompetition,
-} from '../data/competitions'
+import { PageError, PageLoader } from '../components/PageLoader'
+import { useAsync } from '../hooks/useAsync'
+import { getCompetitionDetail } from '../services/competitions/competitionsService'
 import '../styles/workspace-page.css'
 import './CompetitionDetailPage.css'
 
@@ -13,10 +12,15 @@ type CompetitionDetailPageProps = {
 export function CompetitionDetailPage({
   competitionId,
 }: CompetitionDetailPageProps) {
-  const competition = getCompetition(competitionId)
-  const fixtures = competition
-    ? getFixturesForCompetition(competition.competitionId)
-    : []
+  const state = useAsync(
+    () => getCompetitionDetail(competitionId),
+    [competitionId],
+  )
+
+  if (state.status === 'loading') return <PageLoader />
+  if (state.status === 'error') return <PageError message={state.message} />
+
+  const { competition, fixtures } = state.data
 
   if (!competition) {
     return (

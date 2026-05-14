@@ -1,4 +1,4 @@
-import type { CompetitionCategory } from '../../data/competitions'
+import type { CompetitionCategory } from '../../types/competition'
 import './CompetitionCategoryNav.css'
 
 export type CompetitionCategoryNavProps = {

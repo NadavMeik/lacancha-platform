@@ -1,4 +1,4 @@
-import type { MetricLeader } from '../data/mockFootball'
+import type { MetricLeader } from '../types/match'
 import { MetricPair } from './MetricPair'
 import './StatCard.css'
 

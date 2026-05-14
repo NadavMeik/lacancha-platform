@@ -1,8 +1,9 @@
 import { Link } from '../router'
 import { LineupSidePanel } from '../components/lineups/LineupSidePanel'
 import { MatchLineupHeader } from '../components/lineups/MatchLineupHeader'
-import { getFixtureContext } from '../data/competitions'
-import { getLineups } from '../data/lineups'
+import { PageError, PageLoader } from '../components/PageLoader'
+import { useAsync } from '../hooks/useAsync'
+import { getMatchLineupsWithContext } from '../services/lineups/lineupsService'
 import '../styles/workspace-page.css'
 import './MatchLineupsPage.css'
 
@@ -11,10 +12,14 @@ type MatchLineupsPageProps = {
 }
 
 export function MatchLineupsPage({ matchId }: MatchLineupsPageProps) {
-  const data = getLineups(matchId)
-  const ctx = getFixtureContext(matchId)
+  const state = useAsync(() => getMatchLineupsWithContext(matchId), [matchId])
 
-  if (!data) {
+  if (state.status === 'loading') return <PageLoader />
+  if (state.status === 'error') return <PageError message={state.message} />
+
+  const { lineups, ctx } = state.data
+
+  if (!lineups) {
     return (
       <div className="workspace-page">
         <main className="workspace-page__main">
@@ -58,8 +63,8 @@ export function MatchLineupsPage({ matchId }: MatchLineupsPageProps) {
         />
 
         <div className="mlineups__grid workspace-page__grid workspace-page__grid--two">
-          <LineupSidePanel teamName={homeName} lineup={data.home} />
-          <LineupSidePanel teamName={awayName} lineup={data.away} />
+          <LineupSidePanel teamName={homeName} lineup={lineups.home} />
+          <LineupSidePanel teamName={awayName} lineup={lineups.away} />
         </div>
       </main>
     </div>

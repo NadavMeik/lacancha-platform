@@ -1,4 +1,4 @@
-import type { LineupPlayer } from '../../data/lineups'
+import type { LineupPlayer } from '../../types/lineup'
 import './LineupRoster.css'
 
 type LineupRosterProps = {

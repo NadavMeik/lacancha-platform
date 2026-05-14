@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'react'
-import type { MatchSummary } from '../data/mockFootball'
+import type { MatchSummary } from '../types/match'
 import { Link } from '../router'
 import { MatchTimeline } from './MatchTimeline'
 import { MetricPair } from './MetricPair'

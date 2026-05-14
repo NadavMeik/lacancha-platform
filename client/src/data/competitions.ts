@@ -1,22 +1,16 @@
-export type CompetitionCategory = 'league' | 'tournament' | 'national'
+export type {
+  CompetitionCategory,
+  Competition,
+  CompetitionFixture,
+  FixtureContext,
+} from '../types/competition'
 
-export type Competition = {
-  /** Lowercase URL slug and canonical id (e.g. premier-league). */
-  competitionId: string
-  name: string
-  category: CompetitionCategory
-  country?: string
-  season: string
-  blurb: string
-}
-
-export type CompetitionFixture = {
-  matchId: string
-  home: string
-  away: string
-  kickoffLabel: string
-  venue: string
-}
+import type {
+  CompetitionCategory,
+  Competition,
+  CompetitionFixture,
+  FixtureContext,
+} from '../types/competition'
 
 const FIXTURES: Record<string, CompetitionFixture[]> = {
   'premier-league': [
@@ -111,12 +105,7 @@ export function getFixturesForCompetition(
   return FIXTURES[competitionId] ?? []
 }
 
-export function getFixtureContext(matchId: string):
-  | {
-      competition: Competition
-      fixture: CompetitionFixture
-    }
-  | undefined {
+export function getFixtureContext(matchId: string): FixtureContext | undefined {
   for (const c of competitions) {
     const fx = getFixturesForCompetition(c.competitionId).find(
       (f) => f.matchId === matchId,

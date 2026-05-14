@@ -1,4 +1,4 @@
-import type { TeamLineup } from '../../data/lineups'
+import type { TeamLineup } from '../../types/lineup'
 import { FormationBadge } from './FormationBadge'
 import { LineupRoster } from './LineupRoster'
 import './LineupSidePanel.css'

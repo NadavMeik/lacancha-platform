@@ -1,4 +1,4 @@
-import type { Competition } from '../../data/competitions'
+import type { Competition } from '../../types/competition'
 import { Link } from '../../router'
 import './CompetitionCard.css'
 
