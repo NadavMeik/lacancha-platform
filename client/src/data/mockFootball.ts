@@ -1,52 +1,14 @@
-export type TeamSlug = 'mci' | 'liv'
+export type {
+  TeamSlug,
+  TeamSide,
+  MetricLeader,
+  MatchMetricLeaders,
+  TimelineEventType,
+  MatchTimelineEvent,
+  MatchSummary,
+} from '../types/match'
 
-export type TeamSide = {
-  slug: TeamSlug
-  name: string
-  short: string
-  /** Primary kit / brand accent (hex) */
-  primaryColor: string
-  /** Secondary trim (hex) */
-  secondaryColor: string
-  goals: number
-  xg: number
-  possessionPct: number
-  shotsOnTarget: number
-  passAccuracyPct: number
-}
-
-export type MetricLeader = 'home' | 'away' | 'even'
-
-export type MatchMetricLeaders = {
-  possession: MetricLeader
-  xg: MetricLeader
-  shotsOnTarget: MetricLeader
-  passAccuracy: MetricLeader
-}
-
-export type TimelineEventType = 'goal' | 'yellow_card' | 'substitution'
-
-export type MatchTimelineEvent = {
-  minute: number
-  type: TimelineEventType
-  team: 'home' | 'away'
-  label: string
-}
-
-export type MatchSummary = {
-  id: string
-  /** Lowercase slug, matches `competitionId` in competitions data. */
-  competitionId: string
-  competition: string
-  matchday: string
-  kickoffLabel: string
-  venue: string
-  status: 'Full time' | 'Live' | 'Scheduled'
-  home: TeamSide
-  away: TeamSide
-  metricLeaders: MatchMetricLeaders
-  timeline: MatchTimelineEvent[]
-}
+import type { TeamSlug, MetricLeader, MatchSummary } from '../types/match'
 
 export const featuredMatch: MatchSummary = {
   id: 'pl-2025-12-mci-liv',
@@ -57,7 +19,7 @@ export const featuredMatch: MatchSummary = {
   venue: 'Etihad Stadium',
   status: 'Full time',
   home: {
-    slug: 'mci',
+    slug: 'mci' as TeamSlug,
     name: 'Manchester City',
     short: 'MCI',
     primaryColor: '#6CABDD',
@@ -69,7 +31,7 @@ export const featuredMatch: MatchSummary = {
     passAccuracyPct: 89,
   },
   away: {
-    slug: 'liv',
+    slug: 'liv' as TeamSlug,
     name: 'Liverpool',
     short: 'LIV',
     primaryColor: '#C8102E',
@@ -96,7 +58,6 @@ export const featuredMatch: MatchSummary = {
   ],
 }
 
-/** Which side leads on the scoreline (for stat strip styling). */
 export function scoreLeader(homeGoals: number, awayGoals: number): MetricLeader {
   if (homeGoals === awayGoals) return 'even'
   return homeGoals > awayGoals ? 'home' : 'away'
