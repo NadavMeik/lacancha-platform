@@ -1,0 +1,40 @@
+.team-crest {
+  position: relative;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  background: radial-gradient(
+    circle at 30% 25%,
+    color-mix(in srgb, var(--crest-primary) 55%, #fff 8%) 0%,
+    color-mix(in srgb, var(--crest-primary) 22%, var(--bg-elevated)) 100%
+  );
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--crest-primary) 55%, transparent),
+    0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+.team-crest__ring {
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  border: 2px solid color-mix(in srgb, var(--crest-secondary) 75%, transparent);
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.team-crest__initials {
+  position: relative;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #0a0c0f;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.team-crest--away .team-crest__initials {
+  color: #f8fafc;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.35);
+}

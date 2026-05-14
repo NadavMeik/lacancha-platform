@@ -1,0 +1,87 @@
+:root {
+  --bg: #050607;
+  --bg-elevated: #0c0f12;
+  --bg-panel: #0a0d10;
+  --text: #c8cdd3;
+  --text-strong: #f4f6f8;
+  --muted: #7a8490;
+  --line: rgba(255, 255, 255, 0.08);
+  --accent: #2ee59a;
+  --accent-dim: rgba(46, 229, 154, 0.14);
+  --accent-glow: rgba(46, 229, 154, 0.35);
+  --blue: #4db2ff;
+  --radius: 14px;
+  --radius-sm: 10px;
+  --max: 1120px;
+  --space: clamp(1rem, 4vw, 2.5rem);
+  --sidebar-w: 240px;
+  --metric-strong: #5ee9a8;
+  --metric-weak: #c0848a;
+  --metric-neutral: var(--text-strong);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-family: inherit;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.15s ease;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn--primary {
+  color: #04120c;
+  background: linear-gradient(135deg, #2ee59a 0%, #1ec97a 100%);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12) inset;
+}
+
+.btn--primary:hover {
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.18) inset,
+    0 12px 40px var(--accent-glow);
+}
+
+.btn--ghost {
+  color: var(--text-strong);
+  background: transparent;
+  border-color: var(--line);
+}
+
+.btn--ghost:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.btn--outline {
+  color: var(--text-strong);
+  background: rgba(255, 255, 255, 0.03);
+  border-color: var(--line);
+}
+
+.btn--outline:hover {
+  border-color: rgba(77, 178, 255, 0.45);
+  box-shadow: 0 0 0 1px rgba(77, 178, 255, 0.12);
+}
+
+.btn--lg {
+  padding: 0.75rem 1.35rem;
+  font-size: 1rem;
+  border-radius: var(--radius);
+}
